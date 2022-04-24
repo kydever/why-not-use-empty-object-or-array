@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\RPC\FooInterface;
 use Hyperf\HttpServer\Annotation\AutoController;
 
 #[AutoController(prefix: 'foo')]
@@ -22,7 +23,19 @@ class FooController extends Controller
             'obj' => [
                 'id' => 1,
             ],
-            'empty' => [],
+            'empty' => (object) [],
         ]);
+    }
+
+    public function rpc()
+    {
+        return $this->response->success(
+            di()->get(FooInterface::class)->index([
+                'obj' => [
+                    'id' => 1,
+                ],
+                'empty' => (object) [],
+            ])
+        );
     }
 }
