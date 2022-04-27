@@ -14,4 +14,6 @@ namespace App\RPC;
 interface FooInterface
 {
     public function index(array $result): array;
+
+    public function test(array|string $test): array|string;
 }

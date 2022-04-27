@@ -21,4 +21,9 @@ class FooService implements FooInterface
     {
         return $result;
     }
+
+    public function test(array|string $test): array|string
+    {
+        return $test;
+    }
 }

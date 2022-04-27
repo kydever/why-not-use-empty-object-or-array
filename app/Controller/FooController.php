@@ -38,4 +38,14 @@ class FooController extends Controller
             ])
         );
     }
+
+    public function test()
+    {
+        return $this->response->success(
+            [
+                di()->get(FooInterface::class)->test([1, 2, 3]),
+                di()->get(FooInterface::class)->test('hello world'),
+            ]
+        );
+    }
 }
